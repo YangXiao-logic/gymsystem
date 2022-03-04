@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-moment = "*"
+flask-sqlalchemy = "*"
+flask-wtf = "*"
+jinja2 = "*"
+sqlalchemy = "*"
+flask-login = "*"
+flask-migrate = "*"
+bootstrap-flask = "*"
+flask-ckeditor = "*"
+flask-whooshee = "*"
+werkzeug = "*"
+
+[dev-packages]
+faker = "*"
+
+[requires]
+python_version = "3.9"
