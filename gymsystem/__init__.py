@@ -2,7 +2,10 @@ import click
 
 from gymsystem.extension import bootstrap, db, login_manager, csrf, ckeditor,  moment,  migrate
 from gymsystem.setting import config
-
+from gymsystem.blueprint.home import home_bp
+from gymsystem.blueprint.admin import admin_bp
+from gymsystem.blueprint.auth import auth_bp
+from gymsystem.blueprint.gym import gym_bp
 import os
 import logging
 from logging.handlers import RotatingFileHandler
@@ -50,7 +53,7 @@ def register_logging(app):
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    file_handler = RotatingFileHandler(os.path.join(basedir, 'logs/askanswer.log'),
+    file_handler = RotatingFileHandler(os.path.join(basedir, 'logs/gym.log'),
                                        maxBytes=10 * 1024 * 1024, backupCount=10)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
@@ -60,6 +63,10 @@ def register_logging(app):
 
 
 def register_blueprints(app):
+    app.register_blueprint(home_bp)
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(gym_bp, url_prefix='/gym')
+    app.register_blueprint(admin_bp, url_prefix='/admin')
     return app
 
 
