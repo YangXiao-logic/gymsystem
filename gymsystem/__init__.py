@@ -1,6 +1,6 @@
 import click
 
-from gymsystem.extension import bootstrap, db, login_manager, csrf, ckeditor,  moment,  migrate
+from gymsystem.extension import bootstrap, db, login_manager, csrf, ckeditor, moment, migrate
 from gymsystem.setting import config
 from gymsystem.blueprint.home import home_bp
 from gymsystem.blueprint.admin import admin_bp
@@ -95,11 +95,20 @@ def register_command(app):
     @click.option('--question', default=100, help='Quantity of questions, default is 30.')
     @click.option('--answer', default=300, help='Quantity of answers, default is 100.')
     def forge(user, question, answer):
-        from gymsystem.fakes import fake_users
+        from gymsystem.fakes import fake_facility, fake_manager, fake_customer, fake_activity, fake_personal_activity, \
+            fake_employee, fake_product, fake_shopping_cart
         """Generate fake data."""
         db.drop_all()
         db.create_all()
 
-        click.echo('Generating %d users...' % user)
-        fake_users(user)
+        # click.echo('Generating %d users...' % user)
+        fake_employee(3)
+        fake_customer(100)
+        fake_manager(30)
+        fake_facility()
+        fake_activity()
+        fake_personal_activity(200)
+
+        fake_shopping_cart(200)
+        fake_product(300)
 
