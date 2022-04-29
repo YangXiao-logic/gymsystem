@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".usersystem.UserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:text="User"
+        android:fontFamily="sans-serif-black"
+        android:textColor="#343434"
+        android:textSize="35sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/useravater_user"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/defaultavatar"/>
+
+        <TextView
+            android:id="@+id/username_user"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:text="User001" />
+
+        <ImageView
+            android:id="@+id/gender_user"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_man"
+            />
+
+        <ImageView
+            android:id="@+id/userinformation"
+            android:layout_width="23dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="我听不懂你在说什么，因为我只是一只小羊。"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        style="?attr/materialCardViewElevatedStyle">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#524D5A">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_member"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="  Become our valued Member  "
+                        android:textColor="#F1CF8D"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_member"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="12sp"
+                    android:text="1. 10% discount for shopping\n2. 10% discount for reservation\n3. ......"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="#F1CF8D" />
+            </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_member"
+                    style="@style/Widget.Material3.Button.ElevatedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="60dp"
+                    android:backgroundTint="#F1CF8D"
+                    android:text="Join us!"
+                    android:textColor="#524D5A"
+                    android:textSize="14sp"
+                    />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/address_user"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textColor="#302E2E"
+        android:text="Shipping address"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/line_color"/>
+
+    <TextView
+        android:id="@+id/security_user"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textColor="#302E2E"
+        android:text="Account and security"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/line_color"/>
+
+    <TextView
+        android:id="@+id/bookrecord_user"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textColor="#302E2E"
+        android:text="Book record"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/line_color"/>
+
+    <TextView
+        android:id="@+id/paymentrecord_user"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="20sp"
+        android:textColor="#302E2E"
+        android:text="Payment record"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/line_color"/>
+
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#524D5A"
+        android:fontFamily="sans-serif-black"
+        android:text="Log out"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        />
+</LinearLayout>

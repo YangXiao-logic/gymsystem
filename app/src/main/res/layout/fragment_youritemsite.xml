@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".homesystem.YouritemsiteFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        style="?attr/materialCardViewElevatedStyle">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/imagecard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="20dp">
+                <ImageView
+                    android:id="@+id/itemimage"
+                    android:layout_gravity="center"
+                    android:layout_width="190dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/badminton"
+                    android:contentDescription="badminton "
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+            <!-- Media -->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:id="@+id/itemname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Badminton hall 1"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/ic_baseline_location_on_24"/>
+
+                    <TextView
+                        android:id="@+id/itemlocation"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:maxWidth="150dp"
+                        android:gravity="left"
+                        android:text="England, London"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="#333333"
+                        android:textSize="10sp"  />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/itemtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="13sp"
+                    android:text="14:00 - 15:00"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="10sp"
+                        android:text="Booking quantity: "
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/itemnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="1"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/itemtype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="10sp"
+                        android:text=" site"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <Button
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="74dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:text="Cancel"
+                        android:textSize="9sp"
+                        android:textColor="#F44336"
+                        app:strokeColor="#FF5722"
+                        style="?attr/materialButtonOutlinedStyle"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_check"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="71dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:text="check"
+                        android:textSize="9sp"
+                        android:textColor="#777777"
+                        app:strokeColor="#777777"
+                        style="?attr/materialButtonOutlinedStyle"
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

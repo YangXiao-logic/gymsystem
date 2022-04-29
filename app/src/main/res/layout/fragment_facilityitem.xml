@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".booksystem.FacilityitemFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/date_facilityitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:text="3-14"
+                android:textSize="25sp"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:id="@+id/moredate_facilityitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="12sp"
+                    android:text="more dates "
+                    android:fontFamily="sans-serif-black"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_baseline_calendar_today_24"/>
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            style="?attr/materialCardViewElevatedStyle">
+
+            <ImageView
+                android:id="@+id/image_facilityitem"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@drawable/badminton"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/name_facilityitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:textSize="28sp"
+                android:text="Badiminton1"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/black"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Capacity: "
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#777777"
+                    />
+
+                <TextView
+                    android:id="@+id/capacity_facilityitem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="10"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#777777"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text=" sites"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="#777777"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="Open hour: "/>
+
+            <TextView
+                android:id="@+id/time_facilityitem"
+                android:fontFamily="sans-serif-black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8:00 - 22:00"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descrption_facilityitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="Descrption"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_location"/>
+
+            <TextView
+                android:id="@+id/location_facilityitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:text="location"
+                android:fontFamily="sans-serif"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?android:attr/textColorSecondary" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Time: "
+                android:fontFamily="sans-serif-black"
+                android:textSize="15dp"
+                android:gravity="center"/>
+
+            <Spinner
+                android:id="@+id/time_spinner_facilityitem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Remaining sites: "
+                android:fontFamily="sans-serif-black"
+                android:textSize="12dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/remainingsites_facility"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1"
+                android:fontFamily="sans-serif-black"
+                android:textSize="15dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/line_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Sites: "
+                android:fontFamily="sans-serif-black"
+                android:textSize="15dp"
+                android:gravity="center"/>
+
+            <cn.com.cesgroup.numpickerview.NumberPickerView
+                android:id="@+id/sites_facility"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                app:buttonWidth="40dp"
+                app:editable="false"
+                app:editextWidth="30dp"
+                app:textColor="@android:color/black"
+                app:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/line_color"/>
+
+    </LinearLayout>
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:layout_gravity="bottom">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/line_color"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Time: "
+            android:fontFamily="sans-serif-black"
+            android:textSize="15dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/choosentime"
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="15:00 - 16:00"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="15dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sites: "
+            android:fontFamily="sans-serif-black"
+            android:textSize="15dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/choosensites"
+            android:layout_marginLeft="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="15dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/reserve_facilityitem"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:text="Reserve"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#584F60"
+            style="@style/Widget.Material3.Button.ElevatedButton"
+            />
+    </FrameLayout>
+
+
+
+
+
+
+
+
+
+
+</FrameLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".booksystem.BookFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Book"
+            android:textColor="#343434"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/dateicon_book"
+            android:layout_width="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/ic_calendar" />
+
+    </FrameLayout>
+
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/line_color" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookitems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

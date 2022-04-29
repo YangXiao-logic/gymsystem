@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#584F60"
+    android:orientation="vertical"
+    tools:context=".loginsystem.QuickloginActivity"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/back_qlogin"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_arrow_white_24"/>
+
+
+
+    <TextView
+        android:id="@+id/title_qlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:text="Quick Login"
+        android:textColor="@color/white"
+        android:textSize="28sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone_qlogin"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        app:boxBackgroundColor="#746C7C"
+        app:endIconMode="clear_text"
+        android:hint="Enter Your Phone Number"
+        android:textColorHint="#B1AEB9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_qlogin"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:text="Confirm"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:backgroundTint="#43CD93"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        />
+
+
+
+</LinearLayout>
