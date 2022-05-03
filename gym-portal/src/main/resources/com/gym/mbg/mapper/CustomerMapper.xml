@@ -14,6 +14,7 @@
     <result column="identity_card" jdbcType="VARCHAR" property="identityCard" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, username, password, gender, age, portrait, email, credit_card_number, phone, 
-    identity_card, create_time, status
+    identity_card, create_time, status, description
   </sql>
   <select id="selectByExample" parameterType="com.gym.mbg.model.CustomerExample" resultMap="BaseResultMap">
     select
@@ -114,11 +115,13 @@
     insert into customer (username, password, gender, 
       age, portrait, email, 
       credit_card_number, phone, identity_card, 
-      create_time, status)
+      create_time, status, description
+      )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
       #{age,jdbcType=INTEGER}, #{portrait,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{creditCardNumber,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{identityCard,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gym.mbg.model.Customer">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -159,6 +162,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="description != null">
+        description,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -193,6 +199,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -241,6 +250,9 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -259,7 +271,8 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       identity_card = #{record.identityCard,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER}
+      status = #{record.status,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,6 +313,9 @@
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -315,7 +331,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       identity_card = #{identityCard,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

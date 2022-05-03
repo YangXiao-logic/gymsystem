@@ -1,6 +1,7 @@
 package com.gym.service.impl;
 
 import com.gym.common.utils.JwtTokenUtil;
+import com.gym.dto.CustomerUserDetails;
 import com.gym.mbg.mapper.CustomerMapper;
 import com.gym.mbg.model.Customer;
 import com.gym.mbg.model.CustomerExample;
@@ -12,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -86,4 +89,14 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return token;
     }
+
+    @Override
+    public Customer getCurrentCustomer() {
+        SecurityContext ctx = SecurityContextHolder.getContext();
+        Authentication auth = ctx.getAuthentication();
+        CustomerUserDetails customerUserDetails = (CustomerUserDetails) auth.getPrincipal();
+        return customerUserDetails.getCustomer();
+    }
+
+
 }

@@ -48,4 +48,8 @@ public class CustomerUserDetails implements UserDetails {
     public boolean isEnabled() {
         return customer.getStatus().equals(1);
     }
+
+    public Customer getCustomer(){
+        return customer;
+    }
 }

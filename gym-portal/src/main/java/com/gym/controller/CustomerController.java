@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @Controller
 @Api(tags = "CustomerController", description = "后台用户管理")
-@RequestMapping("/admin")
+@RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
@@ -55,6 +55,13 @@ public class CustomerController {
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
+    }
+
+    @ApiOperation(value = "获取用户信息")
+    @RequestMapping(value = "/customer", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<Customer> getCurrentCustomer(){
+        return CommonResult.success(customerService.getCurrentCustomer());
     }
 
 }

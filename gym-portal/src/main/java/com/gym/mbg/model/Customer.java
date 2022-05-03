@@ -40,6 +40,8 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "用户状态 1->可用，0->封禁")
     private Integer status;
 
+    private String description;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -138,6 +140,14 @@ public class Customer implements Serializable {
         this.status = status;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -156,6 +166,7 @@ public class Customer implements Serializable {
         sb.append(", identityCard=").append(identityCard);
         sb.append(", createTime=").append(createTime);
         sb.append(", status=").append(status);
+        sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

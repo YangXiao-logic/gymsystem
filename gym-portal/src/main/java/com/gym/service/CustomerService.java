@@ -16,5 +16,10 @@ public interface CustomerService {
      */
     String login(String username, String password);
 
+    Customer getCurrentCustomer();
+
+    int updateDescription();
+    int updateGender();
+
 
 }
