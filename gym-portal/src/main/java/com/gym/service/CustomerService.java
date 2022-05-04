@@ -21,6 +21,5 @@ public interface CustomerService {
     int updateDescription();
     int updateGender();
 
-    int updatePhone();
 
 }
