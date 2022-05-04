@@ -1,19 +1,19 @@
 package com.gym.service;
 
 import com.gym.mbg.model.Facility;
-import com.gym.mbg.model.SingleActivity;
+import com.gym.mbg.model.SingleOrder;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
-public interface SingleActivityService {
+public interface SingleOrderService {
 
     Date toDate(LocalDateTime localDateTime);
 
-    List<SingleActivity> selectByFacilityByWeek(Facility facility);
+    List<SingleOrder> selectByFacilityByWeek(Facility facility);
 
-    List<SingleActivity> selectByUser(int user_id);
+    List<SingleOrder> selectByUser(int user_id);
 
     void createSingleActivityByFacilityByTime(Facility facility, Date time);
 

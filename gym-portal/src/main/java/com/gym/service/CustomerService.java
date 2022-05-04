@@ -18,8 +18,7 @@ public interface CustomerService {
 
     Customer getCurrentCustomer();
 
-    int updateDescription();
-    int updateGender();
+
 
 
 }

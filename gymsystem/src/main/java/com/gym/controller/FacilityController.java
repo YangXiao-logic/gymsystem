@@ -3,9 +3,9 @@ package com.gym.controller;
 
 import com.gym.common.api.CommonResult;
 import com.gym.mbg.model.Facility;
-import com.gym.mbg.model.SingleActivity;
+import com.gym.mbg.model.SingleOrder;
 import com.gym.service.FacilityService;
-import com.gym.service.SingleActivityService;
+import com.gym.service.SingleOrderService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,15 +21,15 @@ import java.util.List;
 public class FacilityController {
 
     @Autowired
-    private SingleActivityService singleActivityService;
+    private SingleOrderService singleOrderService;
 
     @Autowired
     private FacilityService facilityService;
 
     @GetMapping("{id}")
-    public CommonResult<List<SingleActivity>> getFacilityNextWeekActivity(@PathVariable Integer id){
+    public CommonResult<List<SingleOrder>> getFacilityNextWeekActivity(@PathVariable Integer id){
         Facility facility = facilityService.getFacility(id);
-        List<SingleActivity> activityList = singleActivityService.selectByFacilityByWeek(facility);
+        List<SingleOrder> activityList = singleOrderService.selectByFacilityByWeek(facility);
         return CommonResult.success(activityList);
     }
 

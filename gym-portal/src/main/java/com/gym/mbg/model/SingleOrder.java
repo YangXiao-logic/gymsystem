@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SingleActivity implements Serializable {
+public class SingleOrder implements Serializable {
     private Integer id;
 
     private Integer facilityId;
@@ -12,6 +12,8 @@ public class SingleActivity implements Serializable {
     private Integer userId;
 
     private Date startTime;
+
+    private Integer activityId;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +49,14 @@ public class SingleActivity implements Serializable {
         this.startTime = startTime;
     }
 
+    public Integer getActivityId() {
+        return activityId;
+    }
+
+    public void setActivityId(Integer activityId) {
+        this.activityId = activityId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -57,6 +67,7 @@ public class SingleActivity implements Serializable {
         sb.append(", facilityId=").append(facilityId);
         sb.append(", userId=").append(userId);
         sb.append(", startTime=").append(startTime);
+        sb.append(", activityId=").append(activityId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

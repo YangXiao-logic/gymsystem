@@ -1,8 +1,10 @@
 package com.gym.service.impl;
 
 import com.gym.mbg.mapper.FacilityMapper;
+import com.gym.mbg.mapper.FacilityTimeTableMapper;
 import com.gym.mbg.model.Facility;
 import com.gym.mbg.model.FacilityExample;
+import com.gym.mbg.model.FacilityTimeTable;
 import com.gym.service.FacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Autowired
     private FacilityMapper facilityMapper;
+    @Autowired
+    private FacilityTimeTableMapper facilityTimeTableMapper;
 
     @Override
     public List<Facility> listAllFacility() {
@@ -29,7 +33,11 @@ public class FacilityServiceImpl implements FacilityService {
         FacilityExample example = new FacilityExample();
         example.createCriteria().andFacilityNameEqualTo(facilityName);
         return facilityMapper.selectByExample(example).get(0);
+    }
 
+    @Override
+    public int openFacility(FacilityTimeTable facilityTimeTable){
+        return facilityTimeTableMapper.insert(facilityTimeTable);
     }
 
 

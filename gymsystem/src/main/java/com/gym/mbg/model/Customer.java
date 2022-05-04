@@ -11,6 +11,9 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "用户姓名")
     private String username;
 
+    @ApiModelProperty(value = "用户密码")
+    private String password;
+
     @ApiModelProperty(value = "用户性别 1->男，0->女")
     private Integer gender;
 
@@ -34,6 +37,11 @@ public class Customer implements Serializable {
 
     private Date createTime;
 
+    @ApiModelProperty(value = "用户状态 1->可用，0->封禁")
+    private Integer status;
+
+    private String description;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -50,6 +58,14 @@ public class Customer implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getGender() {
@@ -116,6 +132,22 @@ public class Customer implements Serializable {
         this.createTime = createTime;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -124,6 +156,7 @@ public class Customer implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
         sb.append(", gender=").append(gender);
         sb.append(", age=").append(age);
         sb.append(", portrait=").append(portrait);
@@ -132,6 +165,8 @@ public class Customer implements Serializable {
         sb.append(", phone=").append(phone);
         sb.append(", identityCard=").append(identityCard);
         sb.append(", createTime=").append(createTime);
+        sb.append(", status=").append(status);
+        sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -45,10 +45,13 @@
         <table tableName="facility">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="single_activity">
+        <table tableName="single_order">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="product">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="facility_time_table">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>

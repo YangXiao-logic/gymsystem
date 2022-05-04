@@ -1,12 +1,12 @@
 package com.gym.service.impl;
 
 import com.gym.mbg.mapper.FacilityMapper;
-import com.gym.mbg.mapper.SingleActivityMapper;
+import com.gym.mbg.mapper.SingleOrderMapper;
 import com.gym.mbg.model.Facility;
-import com.gym.mbg.model.SingleActivity;
-import com.gym.mbg.model.SingleActivityExample;
+import com.gym.mbg.model.SingleOrder;
+import com.gym.mbg.model.SingleOrderExample;
 import com.gym.service.FacilityService;
-import com.gym.service.SingleActivityService;
+import com.gym.service.SingleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class SingleActivityServiceImpl implements SingleActivityService {
+public class SingleOrderServiceImpl implements SingleOrderService {
 
     @Autowired
     FacilityMapper facilityMapper;
@@ -24,36 +24,41 @@ public class SingleActivityServiceImpl implements SingleActivityService {
     FacilityService facilityService;
 
     @Autowired
-    SingleActivityMapper singleActivityMapper;
+    SingleOrderMapper singleOrderMapper;
 
     @Override
     public Date toDate(LocalDateTime localDateTime){
         return new Date(localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
     }
 
-    @Override
-    public List<SingleActivity> selectByFacilityByWeek(Facility facility) {
-        SingleActivityExample singleActivityExample = new SingleActivityExample();
-        LocalDateTime startTime = LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
-        LocalDateTime endTime = LocalDateTime.of(LocalDate.now().plusDays(7), LocalTime.MIN);
-        singleActivityExample.createCriteria().andFacilityIdEqualTo(facility.getId())
-                .andStartTimeGreaterThan(toDate(startTime)).andStartTimeLessThan(toDate(endTime));
 
-        return singleActivityMapper.selectByExample(singleActivityExample);
+    public LocalDateTime toDateTime(Date date){
+        return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
 
     @Override
-    public List<SingleActivity> selectByUser(int user_id) {
+    public List<SingleOrder> selectByFacilityByWeek(Facility facility) {
+        SingleOrderExample singleOrderExample = new SingleOrderExample();
+        LocalDateTime startTime = LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
+        LocalDateTime endTime = LocalDateTime.of(LocalDate.now().plusDays(7), LocalTime.MIN);
+        singleOrderExample.createCriteria().andFacilityIdEqualTo(facility.getId())
+                .andStartTimeGreaterThan(toDate(startTime)).andStartTimeLessThan(toDate(endTime));
+
+        return singleOrderMapper.selectByExample(singleOrderExample);
+    }
+
+    @Override
+    public List<SingleOrder> selectByUser(int user_id) {
         return null;
     }
 
     @Override
     public void createSingleActivityByFacilityByTime(Facility facility, Date time) {
         int facilityId = facility.getId();
-        SingleActivity singleActivity = new SingleActivity();
-        singleActivity.setFacilityId(facilityId);
-        singleActivity.setStartTime(time);
-        singleActivityMapper.insertSelective(singleActivity);
+        SingleOrder singleOrder = new SingleOrder();
+        singleOrder.setFacilityId(facilityId);
+        singleOrder.setStartTime(time);
+        singleOrderMapper.insertSelective(singleOrder);
     }
 
     @Override
