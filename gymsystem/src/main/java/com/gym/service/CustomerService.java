@@ -16,4 +16,5 @@ public interface CustomerService {
     Customer getCustomer(int id);
 
 
+    int getRecentMonth(int monthNum);
 }

@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by macro on 2018/4/26.
  */
 @Controller
-@Api(tags = "CustomerController", description = "后台用户管理")
+@Api(tags = "CustomerController", description = "customer")
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
@@ -58,10 +58,22 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "获取用户信息")
-    @RequestMapping(value = "/customer", method = RequestMethod.GET)
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<Customer> getCurrentCustomer(){
         return CommonResult.success(customerService.getCurrentCustomer());
     }
+
+    @ApiOperation(value = "用户修改信息")
+    @RequestMapping(value = "/changeInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<Customer> changeInfo(@RequestBody Customer customerParam, BindingResult result) {
+        Customer customer = customerService.changeInfo(customerParam);
+        if (customer == null) {
+            CommonResult.failed();
+        }
+        return CommonResult.success(customer);
+    }
+
 
 }

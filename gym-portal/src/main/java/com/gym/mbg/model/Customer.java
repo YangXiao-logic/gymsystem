@@ -42,6 +42,9 @@ public class Customer implements Serializable {
 
     private String description;
 
+    @ApiModelProperty(value = "账户余额")
+    private Integer balance;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -148,6 +151,14 @@ public class Customer implements Serializable {
         this.description = description;
     }
 
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -167,6 +178,7 @@ public class Customer implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", status=").append(status);
         sb.append(", description=").append(description);
+        sb.append(", balance=").append(balance);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

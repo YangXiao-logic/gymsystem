@@ -35,4 +35,18 @@ public class FacilityTimeTableController {
         return commonResult;
     }
 
+    @PostMapping("nextWeek")
+    public CommonResult openNextWeek(){
+        CommonResult commonResult;
+        int count = facilityService.openNextWeekAllFacility();
+        if (count == 1) {
+            commonResult = CommonResult.success("操作成功");
+        } else {
+            commonResult = CommonResult.failed("操作失败");
+        }
+        return commonResult;
+    }
+
+
+
 }

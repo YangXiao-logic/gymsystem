@@ -16,4 +16,6 @@ public interface FacilityService {
     Facility getFacilityByName(String facilityName);
 
     int openFacility(FacilityTimeTable facilityTimeTable);
+
+    int openNextWeekAllFacility();
 }

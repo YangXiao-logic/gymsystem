@@ -4,7 +4,7 @@ import com.gym.GymApplication;
 import com.gym.mbg.model.Facility;
 import com.gym.service.FacilityService;
 import com.gym.service.SingleOrderService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 
-@SpringBootTest(classes = GymApplication.class)
+@SpringBootTest
 public class SingleOrderServiceImplTest {
 
     @Autowired
@@ -22,7 +22,7 @@ public class SingleOrderServiceImplTest {
     FacilityService facilityService;
 
     @Test
-    public void testCreateSingleActivityByFacilityByTime() {
+    void testCreateSingleActivityByFacilityByTime() {
 
         String facilityName = "Swimming Pool";
         Facility facility=facilityService.getFacilityByName(facilityName);

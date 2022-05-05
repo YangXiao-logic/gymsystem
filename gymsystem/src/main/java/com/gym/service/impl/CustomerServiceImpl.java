@@ -4,10 +4,13 @@ import com.gym.mbg.mapper.CustomerMapper;
 import com.gym.mbg.model.Customer;
 import com.gym.mbg.model.CustomerExample;
 import com.gym.mbg.model.PmsBrand;
+import com.gym.mbg.model.SingleOrder;
 import com.gym.service.CustomerService;
+import com.gym.service.SingleOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,6 +18,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerMapper customerMapper;
+    @Autowired
+    private SingleOrderService singleOrderService;
 
     @Override
     public int getMaleSize() {
@@ -47,6 +52,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCustomer(int id) {
         return customerMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int getRecentMonth(int monthNum) {
+        CustomerExample customerExample=new CustomerExample();
+        LocalDateTime localDateTime=LocalDateTime.now().minusMonths(monthNum);
+        customerExample.createCriteria().andCreateTimeGreaterThan(singleOrderService.toDate(localDateTime));
+        return (int)customerMapper.countByExample(customerExample);
     }
 
 

@@ -47,5 +47,10 @@ public class CustomerController {
         return CommonResult.success(customerService.getCustomer(id));
     }
 
+    @GetMapping("new/{mounth}")
+    public CommonResult<Integer> getCustomerRecent(@PathVariable("month") int monthNum){
+        return CommonResult.success(customerService.getRecentMonth(monthNum));
+    }
+
 
 }

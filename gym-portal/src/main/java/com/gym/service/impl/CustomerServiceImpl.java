@@ -98,5 +98,14 @@ public class CustomerServiceImpl implements CustomerService {
         return customerUserDetails.getCustomer();
     }
 
+    @Override
+    public Customer changeInfo(Customer customerParam) {
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerParam, customer);
+        customer.setId(getCurrentCustomer().getId());
+        customerMapper.updateByPrimaryKeySelective(customer);
+        return customer;
+    }
+
 
 }

@@ -19,6 +19,5 @@ public interface CustomerService {
     Customer getCurrentCustomer();
 
 
-
-
+    Customer changeInfo(Customer customerParam);
 }
