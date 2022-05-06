@@ -23,7 +23,10 @@ class CustomerServiceImplTest {
 
     @Test
     void login() {
-        customerService.login("user1","123456");
+        for(int i=0;i<500;i++){
+            customerService.login("user"+i,"123456");
+            
+        }
     }
 
     @Test

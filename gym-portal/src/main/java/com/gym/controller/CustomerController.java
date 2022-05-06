@@ -75,5 +75,28 @@ public class CustomerController {
         return CommonResult.success(customer);
     }
 
+    @RequestMapping(value = "/balance",method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult charge(@RequestParam int money){
+        int count=customerService.charge(money);
+        if (count == 1) {
+            return CommonResult.success(null);
+        } else {
+            return CommonResult.failed("操作失败");
+        }
+    }
+
+
+    @RequestMapping(value = "/logoff", method = RequestMethod.DELETE)
+    @ResponseBody
+    public CommonResult logOff(){
+        int count=customerService.logOff();
+        if (count == 1) {
+            return CommonResult.success(null);
+        } else {
+            return CommonResult.failed("操作失败");
+        }
+    }
+
 
 }

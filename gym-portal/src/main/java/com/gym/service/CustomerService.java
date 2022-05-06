@@ -20,4 +20,8 @@ public interface CustomerService {
 
 
     Customer changeInfo(Customer customerParam);
+
+    int logOff();
+
+    int charge(int money);
 }

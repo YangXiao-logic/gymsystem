@@ -1,6 +1,8 @@
 package com.gym.service.impl;
 
 import com.gym.common.api.CommonResult;
+import com.gym.mbg.mapper.ActivityMapper;
+import com.gym.mbg.mapper.CustomerMapper;
 import com.gym.mbg.mapper.SingleOrderMapper;
 import com.gym.mbg.model.Customer;
 import com.gym.mbg.model.SingleOrder;
@@ -21,7 +23,18 @@ public class SingleOrderServiceImpl implements SingleOrderService {
     private CustomerService customerService;
     @Autowired
     private SingleOrderMapper singleOrderMapper;
+    @Autowired
+    private CustomerMapper customerMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
 
+
+    public int pay(int price){
+        Integer balance = customerService.getCurrentCustomer().getBalance();
+        customerService.getCurrentCustomer().setBalance(balance-price);
+        customerMapper.updateByPrimaryKeySelective(customerService.getCurrentCustomer());
+        return 1;
+    }
 
 
     @Override
@@ -35,6 +48,8 @@ public class SingleOrderServiceImpl implements SingleOrderService {
     @Override
     public int order(SingleOrder singleOrder) {
         singleOrder.setUserId(customerService.getCurrentCustomer().getId());
+        int price = activityMapper.selectByPrimaryKey(singleOrder.getActivityId()).getPrice();
+        pay(price);
         return singleOrderMapper.insertSelective(singleOrder);
     }
 

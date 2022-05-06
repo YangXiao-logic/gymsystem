@@ -107,5 +107,18 @@ public class CustomerServiceImpl implements CustomerService {
         return customer;
     }
 
+    @Override
+    public int logOff() {
+        return customerMapper.deleteByPrimaryKey(getCurrentCustomer().getId());
+    }
+
+    @Override
+    public int charge(int money) {
+        Integer balance = getCurrentCustomer().getBalance();
+        getCurrentCustomer().setBalance(balance+money);
+        customerMapper.updateByPrimaryKeySelective(getCurrentCustomer());
+        return 1;
+    }
+
 
 }

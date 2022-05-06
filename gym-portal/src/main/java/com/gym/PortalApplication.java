@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrontEndApplication {
+public class PortalApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FrontEndApplication.class, args);
+        SpringApplication.run(PortalApplication.class, args);
     }
 
 }

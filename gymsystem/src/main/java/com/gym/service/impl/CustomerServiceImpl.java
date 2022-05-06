@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -55,11 +56,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public int getRecentMonth(int monthNum) {
+    public List<Integer> getRecentMonth(int monthNum) {
         CustomerExample customerExample=new CustomerExample();
-        LocalDateTime localDateTime=LocalDateTime.now().minusMonths(monthNum);
-        customerExample.createCriteria().andCreateTimeGreaterThan(singleOrderService.toDate(localDateTime));
-        return (int)customerMapper.countByExample(customerExample);
+        LocalDateTime localDateTime=LocalDateTime.now().minusMonths(12);
+        List<Integer> res = new ArrayList<>();
+        for(int i=0;i<12;i++){
+            customerExample.createCriteria().andCreateTimeGreaterThan(singleOrderService.toDate(localDateTime))
+                    .andCreateTimeLessThanOrEqualTo(singleOrderService.toDate(localDateTime));
+            res.add((int)customerMapper.countByExample(customerExample));
+            localDateTime.plusMonths(1);
+        }
+        return res;
     }
 
 

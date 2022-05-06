@@ -51,6 +51,9 @@
         <table tableName="product">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+        <table tableName="activity">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
         <table tableName="facility_time_table">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>

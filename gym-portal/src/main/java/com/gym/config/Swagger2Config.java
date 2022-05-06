@@ -40,7 +40,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("GymUI show")
-                .description("gym system")
+                .description("gym portal system")
                 .contact("Xiao Yang")
                 .version("1.0")
                 .build();
