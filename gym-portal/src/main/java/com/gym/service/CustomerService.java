@@ -6,6 +6,8 @@ public interface CustomerService {
 
     Customer getCustomerByUsername(String username);
 
+    Boolean hasPhone(String phone);
+
     Customer register(Customer customerParam);
 
     /**

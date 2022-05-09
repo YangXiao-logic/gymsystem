@@ -39,9 +39,9 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("GymUI演示")
-                .description("gym项目演示")
-                .contact("肖杨")
+                .title("Gym admin UI")
+                .description("gym admin")
+                .contact("xiao yang")
                 .version("1.0")
                 .build();
     }

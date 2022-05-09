@@ -4,10 +4,10 @@ package com.gym.controller;
 import com.gym.common.api.CommonResult;
 import com.gym.mbg.model.SingleOrder;
 import com.gym.service.SingleOrderService;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -25,8 +25,9 @@ public class OrderController {
     private SingleOrderService singleOrderService;
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    public CommonResult<SingleOrder> order(@RequestBody SingleOrder singleOrder){
+    @ApiOperation("预定活动")
+    @RequestMapping(value = "/book", method = RequestMethod.POST)
+    public CommonResult<SingleOrder> book(@RequestBody SingleOrder singleOrder){
 
         CommonResult commonResult;
         int count = singleOrderService.order(singleOrder);
@@ -40,6 +41,8 @@ public class OrderController {
         return commonResult;
     }
 
+
+    @ApiOperation("取消活动")
     @RequestMapping(value = "/cancel",method = RequestMethod.DELETE)
     public CommonResult cancelOrder(@RequestParam int facility_id,
                                     @RequestParam String dateStr
@@ -57,6 +60,7 @@ public class OrderController {
         }
     }
 
+    @ApiOperation("用户查看自己的所有预定过的活动")
     @RequestMapping(value = "/check",method = RequestMethod.GET)
     public CommonResult<List<SingleOrder>> checkOrder(){
         return CommonResult.success(singleOrderService.currentCustomerTotalOrder());

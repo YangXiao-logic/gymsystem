@@ -53,19 +53,35 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Boolean hasPhone(String phone){
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andPhoneEqualTo(phone);
+        List<Customer> customerList = customerMapper.selectByExample(example);
+        if (customerList.size() > 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
     public Customer register(Customer customerParam) {
 
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerParam, customer);
         customer.setCreateTime(new Date());
         customer.setStatus(1);
-        //查询是否有相同用户名的用户
-        CustomerExample example = new CustomerExample();
-        example.createCriteria().andUsernameEqualTo(customer.getUsername());
-        List<Customer> customerList = customerMapper.selectByExample(example);
-        if (customerList.size() > 0) {
+        if(hasPhone(customer.getPhone())){
             return null;
         }
+        customer.setUsername(customer.getPhone());
+        //查询是否有相同用户名的用户
+//        CustomerExample example = new CustomerExample();
+//        example.createCriteria().andUsernameEqualTo(customer.getUsername());
+//        List<Customer> customerList = customerMapper.selectByExample(example);
+//        if (customerList.size() > 0) {
+//            return null;
+//        }
         //将密码进行加密操作
         String encodePassword = passwordEncoder.encode(customer.getPassword());
         customer.setPassword(encodePassword);
@@ -119,6 +135,8 @@ public class CustomerServiceImpl implements CustomerService {
         customerMapper.updateByPrimaryKeySelective(getCurrentCustomer());
         return 1;
     }
+
+
 
 
 }

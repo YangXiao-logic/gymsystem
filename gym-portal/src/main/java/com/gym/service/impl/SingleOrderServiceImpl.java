@@ -36,6 +36,13 @@ public class SingleOrderServiceImpl implements SingleOrderService {
         return 1;
     }
 
+    public int refund(int price){
+        Integer balance = customerService.getCurrentCustomer().getBalance();
+        customerService.getCurrentCustomer().setBalance(balance+price);
+        customerMapper.updateByPrimaryKeySelective(customerService.getCurrentCustomer());
+        return 1;
+    }
+
 
     @Override
     public List<SingleOrder> currentCustomerTotalOrder() {
@@ -58,6 +65,13 @@ public class SingleOrderServiceImpl implements SingleOrderService {
         SingleOrderExample singleOrderExample=new SingleOrderExample();
         singleOrderExample.createCriteria().andUserIdEqualTo(customerService.getCurrentCustomer().getId())
                 .andFacilityIdEqualTo(facility_id).andStartTimeEqualTo(date);
+
+        List<SingleOrder> singleOrderList = singleOrderMapper.selectByExample(singleOrderExample);
+        if(singleOrderList.size()==1){
+            SingleOrder singleOrder = singleOrderList.get(0);
+            int price = activityMapper.selectByPrimaryKey(singleOrder.getActivityId()).getPrice();
+            refund(price);
+        }
         return singleOrderMapper.deleteByExample(singleOrderExample);
     }
 

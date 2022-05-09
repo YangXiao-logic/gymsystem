@@ -21,7 +21,7 @@ import java.util.Map;
  * 后台用户管理
  * Created by macro on 2018/4/26.
  */
-@Controller
+@RestController
 @Api(tags = "CustomerController", description = "customer")
 @RequestMapping("/customer")
 public class CustomerController {
@@ -31,6 +31,13 @@ public class CustomerController {
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
+    @ApiOperation(value = "电话号码是否已注册，是为true")
+    @RequestMapping(value = "/hasPhone",method = RequestMethod.GET)
+    public CommonResult<Boolean> hasPhone(@RequestParam String phone){
+        return CommonResult.success(customerService.hasPhone(phone));
+    }
+
 
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -75,6 +82,7 @@ public class CustomerController {
         return CommonResult.success(customer);
     }
 
+    @ApiOperation("充值")
     @RequestMapping(value = "/balance",method = RequestMethod.POST)
     @ResponseBody
     public CommonResult charge(@RequestParam int money){
@@ -87,6 +95,7 @@ public class CustomerController {
     }
 
 
+    @ApiOperation("注销")
     @RequestMapping(value = "/logoff", method = RequestMethod.DELETE)
     @ResponseBody
     public CommonResult logOff(){
