@@ -22,18 +22,18 @@ public class ActivityController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ActivityController.class);
 
-    @GetMapping
-    public CommonResult addNextWeek(){
-        CommonResult commonResult;
-        int count = singleOrderService.createSingleActivityForAllFacilityForWeek();
-        if (count == 1) {
-            commonResult = CommonResult.success("操作成功");
-        } else {
-            commonResult = CommonResult.failed("操作失败");
-
-        }
-        return commonResult;
-    }
+//    @GetMapping
+//    public CommonResult addNextWeek(){
+//        CommonResult commonResult;
+//        int count = singleOrderService.createSingleActivityForAllFacilityForWeek();
+//        if (count == 1) {
+//            commonResult = CommonResult.success("操作成功");
+//        } else {
+//            commonResult = CommonResult.failed("操作失败");
+//
+//        }
+//        return commonResult;
+//    }
 
 
 

@@ -15,8 +15,8 @@ public interface SingleOrderService {
 
     List<SingleOrder> selectByUser(int user_id);
 
-    void createSingleActivityByFacilityByTime(Facility facility, Date time);
-
-    int createSingleActivityForAllFacilityForWeek();
+//    void createSingleActivityByFacilityByTime(Facility facility, Date time);
+//
+//    int createSingleActivityForAllFacilityForWeek();
 
 }

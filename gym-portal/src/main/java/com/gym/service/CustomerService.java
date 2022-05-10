@@ -6,9 +6,13 @@ public interface CustomerService {
 
     Customer getCustomerByUsername(String username);
 
+    Customer getCustomerByPhone(String phone);
+
     Boolean hasPhone(String phone);
 
     Customer register(Customer customerParam);
+
+    Customer newPassword(String phone, String newPassword);
 
     /**
      * 登录功能
@@ -17,6 +21,8 @@ public interface CustomerService {
      * @return 生成的JWT的token
      */
     String login(String username, String password);
+
+    String loginByPhone(String phone);
 
     Customer getCurrentCustomer();
 

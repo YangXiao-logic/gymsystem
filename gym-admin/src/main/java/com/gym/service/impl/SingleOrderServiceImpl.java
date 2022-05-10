@@ -52,31 +52,31 @@ public class SingleOrderServiceImpl implements SingleOrderService {
         return null;
     }
 
-    @Override
-    public void createSingleActivityByFacilityByTime(Facility facility, Date time) {
-        int facilityId = facility.getId();
-        SingleOrder singleOrder = new SingleOrder();
-        singleOrder.setFacilityId(facilityId);
-        singleOrder.setStartTime(time);
-        singleOrderMapper.insertSelective(singleOrder);
-    }
-
-    @Override
-    public int createSingleActivityForAllFacilityForWeek() {
-
-        LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.MIN);
-
-        for(int i=0;i<1;i++){
-            localDateTime=localDateTime.plusHours(10);
-            for (int j=0;j<8;j++){
-                for(int k=1;k<5;k++){
-                    Facility facility = facilityService.getFacility(k);
-                    localDateTime = localDateTime.plusHours(1);
-                    Date date = toDate(localDateTime);
-                    createSingleActivityByFacilityByTime(facility, date);
-                }
-            }
-        }
-        return 1;
-    }
+//    @Override
+//    public void createSingleActivityByFacilityByTime(Facility facility, Date time) {
+//        int facilityId = facility.getId();
+//        SingleOrder singleOrder = new SingleOrder();
+//        singleOrder.setFacilityId(facilityId);
+//        singleOrder.setStartTime(time);
+//        singleOrderMapper.insertSelective(singleOrder);
+//    }
+//
+//    @Override
+//    public int createSingleActivityForAllFacilityForWeek() {
+//
+//        LocalDateTime localDateTime = LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.MIN);
+//
+//        for(int i=0;i<1;i++){
+//            localDateTime=localDateTime.plusHours(10);
+//            for (int j=0;j<8;j++){
+//                for(int k=1;k<5;k++){
+//                    Facility facility = facilityService.getFacility(k);
+//                    localDateTime = localDateTime.plusHours(1);
+//                    Date date = toDate(localDateTime);
+//                    createSingleActivityByFacilityByTime(facility, date);
+//                }
+//            }
+//        }
+//        return 1;
+//    }
 }

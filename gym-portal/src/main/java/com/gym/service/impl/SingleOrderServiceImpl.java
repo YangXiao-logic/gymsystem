@@ -31,6 +31,9 @@ public class SingleOrderServiceImpl implements SingleOrderService {
 
     public int pay(int price){
         Integer balance = customerService.getCurrentCustomer().getBalance();
+        if(balance<price){
+            return 0;
+        }
         customerService.getCurrentCustomer().setBalance(balance-price);
         customerMapper.updateByPrimaryKeySelective(customerService.getCurrentCustomer());
         return 1;
@@ -56,7 +59,10 @@ public class SingleOrderServiceImpl implements SingleOrderService {
     public int order(SingleOrder singleOrder) {
         singleOrder.setUserId(customerService.getCurrentCustomer().getId());
         int price = activityMapper.selectByPrimaryKey(singleOrder.getActivityId()).getPrice();
-        pay(price);
+        int count=pay(price);
+        if(count==0){
+            return 2;
+        }
         return singleOrderMapper.insertSelective(singleOrder);
     }
 

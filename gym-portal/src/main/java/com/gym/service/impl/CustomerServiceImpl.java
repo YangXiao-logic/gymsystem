@@ -52,6 +52,18 @@ public class CustomerServiceImpl implements CustomerService {
         return null;
     }
 
+
+    @Override
+    public Customer getCustomerByPhone(String phone) {
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andPhoneEqualTo(phone);
+        List<Customer> customerList = customerMapper.selectByExample(example);
+        if (customerList != null && customerList.size() > 0) {
+            return customerList.get(0);
+        }
+        return null;
+    }
+
     @Override
     public Boolean hasPhone(String phone){
         CustomerExample example = new CustomerExample();
@@ -71,6 +83,13 @@ public class CustomerServiceImpl implements CustomerService {
         BeanUtils.copyProperties(customerParam, customer);
         customer.setCreateTime(new Date());
         customer.setStatus(1);
+        customer.setBalance(0);
+        customer.setGender(2);
+        customer.setAge(0);
+        customer.setEmail("no email");
+        customer.setCreditCardNumber("no CreditCard");
+        customer.setDescription("no description");
+        customer.setIdentityCard("no Identity");
         if(hasPhone(customer.getPhone())){
             return null;
         }
@@ -86,6 +105,23 @@ public class CustomerServiceImpl implements CustomerService {
         String encodePassword = passwordEncoder.encode(customer.getPassword());
         customer.setPassword(encodePassword);
         customerMapper.insert(customer);
+        return customer;
+    }
+
+    @Override
+    public Customer newPassword(String phone, String newPassword){
+        CustomerExample customerExample = new CustomerExample();
+        customerExample.createCriteria().andPhoneEqualTo(phone);
+        List<Customer> customerList= customerMapper.selectByExample(customerExample);
+        Customer customer = null;
+        if (customerList != null && customerList.size() > 0) {
+            customer = customerList.get(0);
+        }else {
+            return null;
+        }
+        String encodePassword = passwordEncoder.encode(newPassword);
+        customer.setPassword(encodePassword);
+        customerMapper.updateByPrimaryKeySelective(customer);
         return customer;
     }
 
@@ -107,6 +143,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public String loginByPhone(String phone){
+        String token = null;
+        Customer customer = getCustomerByPhone(phone);
+        try {
+            UserDetails userDetails = new CustomerUserDetails(customer);
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            token = jwtTokenUtil.generateToken(userDetails);
+        } catch (AuthenticationException e) {
+            LOGGER.warn("登录异常:{}", e.getMessage());
+        }
+        return token;
+    }
+
+    @Override
     public Customer getCurrentCustomer() {
         SecurityContext ctx = SecurityContextHolder.getContext();
         Authentication auth = ctx.getAuthentication();
@@ -116,16 +167,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer changeInfo(Customer customerParam) {
+        if(customerParam.getBalance()!=null || customerParam.getStatus()!=null){
+            return null;
+        }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerParam, customer);
         customer.setId(getCurrentCustomer().getId());
         customerMapper.updateByPrimaryKeySelective(customer);
-        return customer;
+        return getCurrentCustomer();
     }
+
+
 
     @Override
     public int logOff() {
-        return customerMapper.deleteByPrimaryKey(getCurrentCustomer().getId());
+        Customer customer = getCurrentCustomer();
+        customer.setStatus(0);
+        return customerMapper.updateByPrimaryKey(customer);
     }
 
     @Override

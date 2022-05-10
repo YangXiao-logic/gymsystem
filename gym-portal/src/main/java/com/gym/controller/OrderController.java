@@ -28,13 +28,16 @@ public class OrderController {
     @ApiOperation("预定活动")
     @RequestMapping(value = "/book", method = RequestMethod.POST)
     public CommonResult<SingleOrder> book(@RequestBody SingleOrder singleOrder){
-
         CommonResult commonResult;
         int count = singleOrderService.order(singleOrder);
         if (count == 1) {
             commonResult = CommonResult.success(singleOrder);
             LOGGER.debug("order success:{}", singleOrder);
-        } else {
+        } else if(count == 2){
+            commonResult = CommonResult.failed("余额不足");
+            LOGGER.debug("order failed:{}", singleOrder);
+        }
+        else {
             commonResult = CommonResult.failed("操作失败");
             LOGGER.debug("order failed:{}", singleOrder);
         }

@@ -33,7 +33,7 @@ public class CustomerController {
     private String tokenHead;
 
     @ApiOperation(value = "电话号码是否已注册，是为true")
-    @RequestMapping(value = "/hasPhone",method = RequestMethod.GET)
+    @RequestMapping(value = "/hasPhone",method = RequestMethod.POST)
     public CommonResult<Boolean> hasPhone(@RequestParam String phone){
         return CommonResult.success(customerService.hasPhone(phone));
     }
@@ -50,6 +50,19 @@ public class CustomerController {
         return CommonResult.success(customer);
     }
 
+    @ApiOperation(value = "电话号码登录以后返回token")
+    @RequestMapping(value = "/loginByPhone", method = RequestMethod.POST)
+    public CommonResult loginByPhone(@RequestParam String phone) {
+        String token = customerService.loginByPhone(phone);
+        if (token == null) {
+            return CommonResult.validateFailed("用户名或密码错误");
+        }
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("token", token);
+        tokenMap.put("tokenHead", tokenHead);
+        return CommonResult.success(tokenMap);
+    }
+
     @ApiOperation(value = "登录以后返回token")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -63,6 +76,20 @@ public class CustomerController {
         tokenMap.put("tokenHead", tokenHead);
         return CommonResult.success(tokenMap);
     }
+
+
+
+    @ApiOperation(value = "忘记密码改密码")
+    @RequestMapping(value = "/newPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<Customer> newPassWord(@RequestParam String phone, @RequestParam String password){
+        Customer customer = customerService.newPassword(phone, password);
+        if (customer == null) {
+            CommonResult.failed();
+        }
+        return CommonResult.success(customer);
+    }
+
 
     @ApiOperation(value = "获取用户信息")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
